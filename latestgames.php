@@ -2,7 +2,11 @@
 require_once 'initialize.php';
 $page = 'gamestore';
 $subpage = 'latestgames';
-$data = array("name" => "Angry Cube 2", "description" => "Some really angry cubes! play the next exciting installment of our topseller Angry Cube.  This sequal promises to bring all the fun that got you hooked in the first Angry Cube, but this time we will double, or even triple the fun.  Be warned, these are some very angry cubes, they are ready to play, are you?", "image" => "./imgs/game-cards/angrycube2.png");
+
+$query = "SELECT Name, Description, Image FROM game WHERE Name = 'Angry Cubes 2'";
+$mysql = new Database();
+$data = $mysql->query($query)[0];
+
 require_once './inc/header.php';
 ?>
     <main>
@@ -17,7 +21,7 @@ require_once './inc/header.php';
                     <div class="container-box">
                         <div class="row">
                             <div class="container-box--img">
-                                <img src="<?php echo $data["image"];?>" alt="gameName">
+                                <img src="./imgs/game-cards/<?php echo $data["Image"];?>" alt="gameName">
                                 <div id="rating">
                                     <!-- star icon = #9733; -->
                                     <i class="icon">&#9733;</i>
@@ -27,11 +31,11 @@ require_once './inc/header.php';
                                     <i class="icon icon__inactive">&#9733;</i>
                                 </div>
                             </div>
-                            <div class="container-box--title"><h3><?php echo $data["name"]; ?></h3></div>
+                            <div class="container-box--title"><h3><?php echo $data["Name"]; ?></h3></div>
                         </div>
                         <div class="content-box--contents">
                             <h4 class="contents--title">Synopsis</h4>
-                            <p><?php echo $data["description"]; ?></p>
+                            <p><?php echo $data["Description"]; ?></p>
                             <button class="btn btn--buynow">Buy Now</button>
                         </div>
                     </div>

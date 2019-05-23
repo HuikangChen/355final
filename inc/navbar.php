@@ -26,7 +26,7 @@
             <li class="<?php echo ($page == 'gamestore') ? 'nav-current' : ''; ?>">
                 <a href="<?php echo $links["latestgames"]; ?>">GAME STORE</a>
             </li>
-            <?php session_start(); if(isset($_SESSION["username"])) : ?>                
+            <?php if(isset($_SESSION["username"])) : ?>                
                 <li class="<?php echo ($page == 'mydashboard') ? 'nav-current' : ''; ?>">
                     <a href="<?php echo $links["mygames"]; ?>">MY Dashboard</a>
                 </li>                

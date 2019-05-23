@@ -16,18 +16,17 @@ function viewGameInfo(gameName){
         //show modal
         document.getElementById("modal").style = "display:block";
         document.getElementById("modal-gamename").innerText = gameName;
-        var image;
-        var description;
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
+            console.log(this);
             if (this.readyState == 4 && this.status == 200) {
                 var game = JSON.parse(this.response);
                     document.getElementById("modal-gamedescription").innerText = game.description;
                     document.getElementById("modal-img").src = game.image;
             }
         };
-        xmlhttp.open("GET", "ListofAllGames.php?q=" + gameName, true);
+        xmlhttp.open("GET", "ListofAllGames.php?q=" + encodeURI(gameName), true);
         xmlhttp.send();
 }
 

@@ -1,6 +1,4 @@
 <?php 
-session_start();
-
 require_once 'initialize.php';
 
 $page = 'signin';
